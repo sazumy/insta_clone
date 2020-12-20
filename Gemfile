@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'html2slim'
+gem 'redis-rails'
 gem 'rails-i18n'
 gem 'slim-rails'
 gem 'sorcery'
