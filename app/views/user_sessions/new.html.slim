@@ -1,0 +1,5 @@
+h1 Login
+  - if logged_in?
+    = render 'login_form'
+  - else
+    = link_to "Logout", :logout, method: :post
