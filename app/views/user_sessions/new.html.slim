@@ -1,5 +1,6 @@
-h1 Login
-  - if logged_in?
-    = render 'login_form'
-  - else
-    = link_to "Logout", :logout, method: :post
+= form_with url: login_path, method: :post do |f|
+  = f.label :email
+  = f.text_field :email
+  = f.label :password
+  = f.password_field :password
+  = f.submit 'ログイン'

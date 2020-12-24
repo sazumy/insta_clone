@@ -1,3 +1,6 @@
-h1 InstaClone
+h1 InslaClone
 nav
-  = link_to 'ログアウト', '#', class: 'btn'
+  - if logged_in?
+    = link_to 'ログアウト', logout_path, method: :delete
+  - else
+    = link_to 'ログイン', login_path
