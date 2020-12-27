@@ -2,10 +2,10 @@
   .card.mb-3
     = form_with url: login_path, method: :post, local: true, class: 'card-body' do |f|
       .form-group
-        = f.label :email, 'メールアドレス', class: 'bmd-label-floating'
+        = f.label :email, "#{t('activerecord.models.users.email')}", class: 'bmd-label-floating'
         = f.text_field :email, class: 'form-control'
       .form-group
-        = f.label :password, 'パスワード', class: 'bmd-label-floating'
+        = f.label :password, "#{t('activerecord.models.users.password')}", class: 'bmd-label-floating'
         = f.password_field :password, class: 'form-control'
       = f.submit 'ログイン', class: 'btn btn-raised btn-primary'
   .card
