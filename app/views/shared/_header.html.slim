@@ -14,4 +14,4 @@ header#header
           li.nav-item= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete
         - else
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
-
+  = render 'shared/flash'
