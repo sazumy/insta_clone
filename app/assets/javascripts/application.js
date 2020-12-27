@@ -16,7 +16,3 @@
 //= require activestorage
 //= require bootstrap-material-design/dist/js/bootstrap-material-design.js
 //= require_tree .
-
-$(document).on('ready page:load', function() {
-  $.material.init();
-});
