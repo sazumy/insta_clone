@@ -81,6 +81,8 @@ GEM
     debug_inspector (0.0.3)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
     faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
@@ -286,6 +288,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  faker
   html2slim
   jbuilder (~> 2.5)
   jquery-rails
