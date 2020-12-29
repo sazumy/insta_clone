@@ -4,7 +4,6 @@
 #
 #  id         :bigint           not null, primary key
 #  body       :text(65535)      not null
-#  images     :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint
@@ -19,4 +18,5 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :images
 end
