@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'carrierwave'
 gem 'html2slim'
 gem 'jquery-rails'
 gem 'popper_js'
