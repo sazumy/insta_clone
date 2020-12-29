@@ -17,5 +17,5 @@
 #  fk_rails_...  (post_id => posts.id)
 #
 class Image < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
 end

@@ -1,5 +1,4 @@
 puts 'images ...'
-User.limit(5).each do |user|
-  post = user.posts.first
+Post.all.each do |post|
   post.images.create!(image: "https://picsum.photos/350/350/?random")
 end

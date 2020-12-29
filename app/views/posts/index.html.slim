@@ -1,28 +1,25 @@
 .col.col-md-8
-  .card.mb-5
-    .card-header
-      =image_tag 'https://placehold.jp/50x50.png', size: '50x50', alt: 'user icon'
-      span aaaaa
-    .card-img-top
-      =image_tag 'https://placehold.jp/400x300.png', size: '400x300', alt: 'post img'
-    .card-body
-      .card-text
-        span post.body
+  - @posts.each do |post|
+    .card.mb-5.mx-auto.post
+      .card-header
+        = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
+        span= post.user.username
+      .card-img-top
+        = image_tag post.images[0].image, size: '400x300', alt: 'post img'
+      .card-body
+        .card-text
+          span= post.body
 
 .col.col-md-4
   .card
     .card-header
       span ユーザー
-    .card-body
-      ul
-        li
-         =image_tag 'https://placehold.jp/50x50.png', size: '50x50', alt: 'user icon'
-         | aaaaa
-        li
-         =image_tag 'https://placehold.jp/50x50.png', size: '50x50', alt: 'user icon'
-         | bbbb
-        li
-         =image_tag 'https://placehold.jp/50x50.png', size: '50x50', alt: 'user icon'
-         | cccc
+    .card-body.py-0
+      ul.list-group
+        - @users.each do |user|
+          li.list-group-item
+            = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle', alt: 'user icon'
+            span= user.username
+
     .card-footer
       =link_to '全て見る', '#'
