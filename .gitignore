@@ -27,5 +27,6 @@
 /config/master.key
 
 /config/database.yml
+dump.rdb
 /vendor
 /.vscode/*
