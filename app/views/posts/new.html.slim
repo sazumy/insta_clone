@@ -1,6 +1,6 @@
 .card.col-6.mx-auto
   .card-body
-    = form_with model: @post, local: true do |f|
+    = form_with model: @post, url: posts_path, local: true do |f|
       .form-group
         = f.label '画像', class: 'bmd-label-floating"'
         = f.file_field '#', multiple: true, class: 'form-control'

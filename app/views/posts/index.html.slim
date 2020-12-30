@@ -5,7 +5,8 @@
         = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
         span= post.user.username
       .card-img-top
-        = image_tag post.images[0].image, size: '400x300', alt: 'post img'
+        - if post.images[0].image.present?
+          = image_tag post.images[0].image, size: '400x300', alt: 'post img'
       .card-body
         .card-text
           span= post.body
