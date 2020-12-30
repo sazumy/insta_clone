@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_login, only: :new
   def index
     @users = User.all
     @posts = Post.all.order(created_at: 'DESC')
