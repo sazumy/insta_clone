@@ -1,0 +1,10 @@
+.card.col-6.mx-auto
+  .card-body
+    = form_with model: @post, local: true do |f|
+      .form-group
+        = f.label '画像', class: 'bmd-label-floating"'
+        = f.file_field '#', multiple: true, class: 'form-control'
+      .form-group
+        = f.label :body, '本文', class: 'bmd-label-floating"'
+        = f.text_field :body, class: 'form-control'
+      = f.submit '登録する', class: 'btn btn-raised btn-primary'
