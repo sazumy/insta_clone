@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_login, only: :new
+  before_action :set_post, only: %i(show edit update delete)
+
   def index
     @users = User.all
     @posts = Post.all.order(created_at: 'DESC')
@@ -20,9 +22,20 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
   private
 
   def post_params
     params.require(:post_form).permit(:body, photoes: [])
   end
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
 end

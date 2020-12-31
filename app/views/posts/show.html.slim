@@ -1,0 +1,11 @@
+.col-8.mx-auto.d-flex.
+  .col-8
+    = render 'post_img', post: @post
+  .col-4.card
+  .card-header
+    = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
+        span= @post.user.username
+  .card-body
+    .card-text
+      span= @post.body
+  .card-footer
