@@ -2,9 +2,9 @@
   .card-body
     = form_with model: @post, url: posts_path, local: true do |f|
       .form-group
-        = f.label '画像', class: 'bmd-label-floating"'
-        = f.file_field '#', multiple: true, class: 'form-control'
+        = f.label :photo, t('activerecord.models.images.photo'), class: 'bmd-label-floating"'
+        = f.file_field :photo, class: 'form-control'
       .form-group
-        = f.label :body, '本文', class: 'bmd-label-floating"'
+        = f.label :body, t('activerecord.models.posts.body'), class: 'bmd-label-floating"'
         = f.text_field :body, class: 'form-control'
       = f.submit '登録する', class: 'btn btn-raised btn-primary'
