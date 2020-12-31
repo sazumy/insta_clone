@@ -13,8 +13,10 @@ class PostForm
     return false if invalid?
     post = Post.new(body: body, user_id: user_id)
 
-    photoes.each do |photo|
-      post.images.build(photo: photo).save!
+    if photoes
+      photoes.each do |photo|
+        post.images.build(photo: photo).save!
+      end
     end
 
     post.save! ? true : false
