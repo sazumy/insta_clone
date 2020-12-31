@@ -3,7 +3,7 @@
 # Table name: images
 #
 #  id         :bigint           not null, primary key
-#  image      :string(255)
+#  photo      :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  post_id    :bigint
@@ -17,5 +17,6 @@
 #  fk_rails_...  (post_id => posts.id)
 #
 class Image < ApplicationRecord
-  # mount_uploader :image, ImageUploader
+  mount_uploader :photo, ImageUploader
+  belongs_to :post
 end
