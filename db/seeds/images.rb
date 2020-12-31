@@ -1,4 +1,4 @@
 puts 'images ...'
 Post.all.each do |post|
-  post.images.create!(image: "https://picsum.photos/350/350/?random")
+  post.images.create!(photo: open("#{Rails.root}/db/fixtures/sample_01.jpeg"))
 end
