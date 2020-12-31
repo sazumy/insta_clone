@@ -1,22 +1,22 @@
 class PostForm
   include ActiveModel::Model
-  extend CarrierWave::Mount
 
   def initialize(params)
     super(params)
   end
 
-  attr_accessor :body, :photo, :user_id
-  mount_uploader :photo, ImageUploader
+  attr_accessor :body, :photoes, :user_id
 
   validates :body, presence: true
 
   def save!
     return false if invalid?
     post = Post.new(body: body, user_id: user_id)
-    post.images.build(photo: photo).save!
 
-    post.save!
-    return post
+    photoes.each do |photo|
+      post.images.build(photo: photo).save!
+    end
+
+    post.save! ? true : false
   end
 end
