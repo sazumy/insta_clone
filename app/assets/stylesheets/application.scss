@@ -15,9 +15,37 @@
  */
 @import 'bootstrap-material-design/dist/css/bootstrap-material-design';
 @import 'swiper/swiper-bundle';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+
+$x: 4px;
+$2x: calc($x * 2);
+$3x: calc($x * 3);
+$4x: calc($x * 4);
+$5x: calc($x * 5);
+$6x: calc($x * 6);
+$7x: calc($x * 7);
+$8x: calc($x * 8);
+$9x: calc($x * 9);
+$10x: calc($x * 10);
+$11x: calc($x * 11);
+$12x: calc($x * 12);
+$13x: calc($x * 13);
+$14x: calc($x * 14);
+$15x: calc($x * 15);
+
 
 #header {
-  margin-bottom: 48px
+  margin-bottom: $12x
+}
+
+.c-icon-button {
+  display: inline-block;
+  height: $8x;
+  text-align: center;
+  vertical-align: -40%;
+  width: $8x;
 }
 
 .post {
