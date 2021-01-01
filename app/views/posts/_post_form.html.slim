@@ -1,0 +1,10 @@
+= form_with model: post, url: posts_path, local: true do |f|
+  .form-group
+    = f.label :photoes, t('activerecord.models.images.photo'), class: 'bmd-label-floating"'
+    = f.file_field :photoes, multiple: true, class: 'form-control mb-1'
+    - post.images.each do |img|
+      = image_tag img.photo.url, width: '100'
+  .form-group
+    = f.label :body, t('activerecord.models.posts.body'), class: 'bmd-label-floating"'
+    = f.text_field :body, class: 'form-control'
+  = f.submit '登録する', class: 'btn btn-raised btn-success'

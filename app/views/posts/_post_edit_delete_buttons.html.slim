@@ -1,5 +1,5 @@
 .c-icon-group
-  = link_to edit_post_path(post) do
-    span.c-icon-button=icon('far', 'trash-alt', class: 'fa-lg')
   = link_to post_path(post), method: :delete do
+    span.c-icon-button=icon('far', 'trash-alt', class: 'fa-lg')
+  = link_to edit_post_path(post) do
     span.c-icon-button=icon('far', 'edit', class: 'fa-lg')
