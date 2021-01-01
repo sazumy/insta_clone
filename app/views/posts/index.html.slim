@@ -1,9 +1,9 @@
 .col.col-md-8
   - @posts.each do |post|
-    .card.mb-5.mx-auto.post
-      .card-header
-        = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
-        span= post.user.username
+    .card.mb-5.mx-auto.c-image-container
+      .card-header.d-flex.justify-content-between
+        = render 'shared/user_icon_and_name', user: post.user
+        = render 'post_edit_delete_buttons', post: post
       = link_to post_path(post) do
         = render 'post_img', post: post
 
