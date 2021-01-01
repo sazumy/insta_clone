@@ -3,7 +3,8 @@
     .card.mb-5.mx-auto.c-image-container
       .card-header.d-flex.justify-content-between
         = render 'shared/user_icon_and_name', user: post.user
-        = render 'post_edit_delete_buttons', post: post
+        - if logged_in? && post.user == current_user
+          = render 'post_edit_delete_buttons', post: post
       = link_to post_path(post) do
         = render 'post_img', post: post
 

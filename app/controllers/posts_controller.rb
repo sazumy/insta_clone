@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: :new
+  before_action :require_login, only: %i(new edit)
   before_action :set_post, only: %i(show edit update delete)
 
   def index
@@ -26,6 +26,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    @updated_post = PostForm.new(post_params, post: @post)
+  end
+
+  def destroy
   end
 
   private
