@@ -1,7 +1,7 @@
 class PostForm
   include ActiveModel::Model
 
-  attr_accessor :body, :photoes, :user_id
+  attr_accessor :body, :photoes, :user
   validates :body, presence: true
 
   def initialize(user, params = {}, post: '')

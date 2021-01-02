@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login, only: %i(new edit)
-  before_action :set_post, only: %i(show edit update delete)
+  before_action :set_post, only: %i(show edit update destroy)
 
   def index
     @users = User.all
@@ -41,7 +41,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy!
     redirect_to posts_path
     flash[:success] = '投稿を削除しました'
