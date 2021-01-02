@@ -1,24 +1,29 @@
 class PostForm
   include ActiveModel::Model
 
-  def initialize(params)
+  attr_accessor :body, :photoes, :user_id
+  validates :body, presence: true
+
+  def initialize(user, params = {})
+    @post = Post.new(user: user)
+    @post.assign_attributes(body: params[:body])
     super(params)
   end
 
-  attr_accessor :body, :photoes, :user_id
+  def to_model
+    @post
+  end
 
-  validates :body, presence: true
 
   def save!
     return false if invalid?
-    post = Post.new(body: body, user_id: user_id)
 
     if photoes
       photoes.each do |photo|
-        post.images.build(photo: photo).save!
+        @post.images.build(photo: photo).save!
       end
     end
 
-    post.save! ? true : false
+    @post.save! ? true : false
   end
 end

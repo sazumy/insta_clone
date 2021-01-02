@@ -8,12 +8,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = PostForm.new(user_id: current_user.id)
+    @post_form = PostForm.new(current_user)
   end
 
   def create
-    @post = PostForm.new(post_params.merge(user_id: current_user.id))
-    if @post.save!
+    @post_form = PostForm.new(current_user, post_params)
+    if @post_form.save!
       redirect_to root_path
       flash[:success] = "投稿しました"
     else
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
   # TODO: post_paramsとpost_edit_paramsを統合する
   def post_params
-    params.require(:post_form).permit(:body, photoes: [])
+    params.require(:post).permit(:body, photoes: [])
   end
 
   def post_edit_params
