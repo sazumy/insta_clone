@@ -4,8 +4,8 @@ class PostForm
   attr_accessor :body, :photoes, :user_id
   validates :body, presence: true
 
-  def initialize(user, params = {}, post: Post.new)
-    @post = post
+  def initialize(user, params = {}, post: '')
+    @post ||= Post.new
     @post.assign_attributes({user: user, body: params[:body]})
     super(params)
   end

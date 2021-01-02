@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post_form = PostForm.new(current_user, post_params)
+    @post_form = PostForm.new(current_user, post_params, post: Post.new)
     if @post_form.save!
       redirect_to root_path
       flash[:success] = "投稿しました"
