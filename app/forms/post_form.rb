@@ -14,9 +14,6 @@ class PostForm
     @post
   end
 
-
-  # TODO: UPDATEでもCREATEになってしまうのを直す
-  # CREATEでうまくいくか確認する
   def save!
     return false if invalid?
     if photoes
