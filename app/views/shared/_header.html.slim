@@ -9,9 +9,20 @@ header#header
         =f.text_field :body, class: 'form-control mr-sm-2', placeholder: '本文'
         =f.submit "SEARCH", class: 'btn btn-outline-success my-2 my-sm-0'
       ul.navbar-nav.mt-2.mt-lg-0
-        li.nav-item=link_to 'ポスト一覧', '#', class: 'nav-link'
         - if logged_in?
+          ruby:
+            nav_menus = [
+                          {path: new_post_path, icon: 'image', title: '新規投稿作成'},
+                          {path: '#', icon: 'comments', title: 'チャットルームへ'},
+                          {path: '#', icon: 'heart', title: 'あなたへのお知らせ'},
+                          {path: '#', icon: 'user', title: 'マイルームへ'},
+                        ]
+
+          - nav_menus.each do |menu|
+            li.nav-item= link_to menu[:path], class: 'nav-link', title: menu[:title] do
+              = icon 'far', menu[:icon], class: 'fa-lg'
           li.nav-item= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete
         - else
+          li.nav-item=link_to 'ポスト一覧', posts_path, class: 'nav-link'
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
   = render 'shared/flash'
