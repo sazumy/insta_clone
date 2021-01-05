@@ -1,0 +1,27 @@
+.col.col-md-8
+  - @posts.each do |post|
+    .card.mb-5.mx-auto.c-image-container
+      .card-header.d-flex.justify-content-between
+        = render 'shared/user_icon_and_name', user: post.user
+        - if logged_in? && post.user == current_user
+          = render 'post_edit_delete_buttons', post: post
+      = link_to post_path(post) do
+        = render 'post_img', post: post
+
+      .card-body
+        .card-text
+          span= post.body
+
+.col.col-md-4
+  .card
+    .card-header
+      span ユーザー
+    .card-body.py-0
+      ul.list-group
+        - @users.each do |user|
+          li.list-group-item
+            = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle', alt: 'user icon'
+            span= user.username
+
+    .card-footer
+      =link_to '全て見る', '#'

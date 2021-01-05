@@ -1,0 +1,15 @@
+.col-8.mx-auto.card.flex-row.p-0
+  .c-image-container
+    = render 'post_img', post: @post
+  .col
+    .card-header.d-flex.justify-content-between
+      = render 'shared/user_icon_and_name', user: @post.user
+      - if logged_in? && @post.user == current_user
+        = render 'post_edit_delete_buttons', post: @post
+    .card-body
+      .card-text
+        = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
+        span= @post.body
+    .card-footer.d-flex
+      .col.flex-grow-1 コメントフォーム
+      button.btn.btn-success.btn-raised 投稿
