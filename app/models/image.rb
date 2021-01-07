@@ -19,4 +19,5 @@
 class Image < ApplicationRecord
   mount_uploader :photo, ImageUploader
   belongs_to :post
+  counter_culture :post
 end
