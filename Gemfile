@@ -30,9 +30,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'carrierwave'
+gem 'counter_culture'
+gem 'font-awesome-sass'
 gem 'html2slim'
 gem 'jquery-rails'
-gem 'font-awesome-sass'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'popper_js'
 gem 'redis-rails'
@@ -62,6 +64,7 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bullet'
   gem 'rubocop', require: false
   gem 'rubocop-rails'
 end

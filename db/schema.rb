@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_082638) do
+ActiveRecord::Schema.define(version: 2021_01_06_123252) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "photo"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_29_082638) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "images_count", default: 0, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
