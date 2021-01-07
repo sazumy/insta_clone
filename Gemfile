@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'carrierwave'
+gem 'counter_culture'
 gem 'html2slim'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
