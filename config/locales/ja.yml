@@ -16,6 +16,10 @@ ja:
         body: "本文"
       images:
         photo: "画像"
+      comment:
+        body: 'コメント'
+        user_id: 'ユーザー'
+        post_id: '投稿'
   date:
     abbr_day_names:
     - 日
