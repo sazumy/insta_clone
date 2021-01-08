@@ -1,4 +1,4 @@
-.col-8.mx-auto.card.flex-row.p-0
+.col.col-xl-8.mx-auto.card.d-block.d-md-flex.flex-row.p-0
   .c-image-container
     = render 'post_img', post: @post
   .col
@@ -7,9 +7,16 @@
       - if logged_in? && @post.user == current_user
         = render 'post_edit_delete_buttons', post: @post
     .card-body
-      .card-text
+      .card-text.py-2.d-flex
         = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
         span= @post.body
-    .card-footer.d-flex
-      .col.flex-grow-1 コメントフォーム
-      button.btn.btn-success.btn-raised 投稿
+      - @comments.each do |comment|
+        .card-text.py-2.d-flex
+          = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
+          span= comment.body
+
+    .card-footer
+      = form_with model: [@post, @comment], class: 'd-flex', local: true do |f|
+        = f.text_field :body, class: 'form-control flex-grow-1', placeholder: 'コメント'
+        = f.submit '投稿', class: 'btn btn-primary btn-raised'
+
