@@ -1,0 +1,3 @@
+= form_with model: [@post, @comment], class: 'd-flex js-comment-form' do |f|
+  = f.text_field :body, class: 'form-control flex-grow-1', placeholder: 'コメント'
+  = f.submit '投稿', class: 'btn btn-primary btn-raised'
