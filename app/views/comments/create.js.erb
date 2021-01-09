@@ -1,2 +1,2 @@
-$('.comments').append("<%= j render('comments/comment', comment: @comment) %></li>");
+$('.comments').prepend("<%= j(render 'comment', comment: @comment) %>");
 $('.js-comment-form')[0].reset();
