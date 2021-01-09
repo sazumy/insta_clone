@@ -50,10 +50,17 @@ a {
   background-color: $teal;
 }
 
+// layout -----------------------
 #header {
   margin-bottom: $x12
 }
 
+.l-comments-container {
+  max-height: 240px;
+  overflow-y: scroll;
+}
+
+// component ---------------------
 .c-icon-button {
   display: inline-block;
   height: $x8;

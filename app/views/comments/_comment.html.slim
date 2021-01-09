@@ -1,8 +1,9 @@
 .card-text.py-2.d-flex
 	= render 'shared/user_icon_and_name', user: comment.user
 	.flex-grow-1.ml-2= comment.body
-    .c-icon-group
-      = link_to comment_path(comment), method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do
-        span.c-icon-button=icon('far', 'trash-alt', class: 'fa-lg')
-      = link_to edit_comment_path(comment) do
-        span.c-icon-button=icon('far', 'edit', class: 'fa-lg')
+    - if current_user&.own?(comment)
+      .c-icon-group.text-nowrap
+        = link_to comment_path(comment), method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do
+          span.c-icon-button=icon('far', 'trash-alt', class: 'fa-lg')
+        = link_to edit_comment_path(comment) do
+          span.c-icon-button=icon('far', 'edit', class: 'fa-lg')
