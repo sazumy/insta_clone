@@ -5,5 +5,5 @@ div class="card-text py-2 d-flex js-comment-#{comment.id}"
       .c-icon-group.text-nowrap
         = link_to comment_path(comment), method: :delete, data: {confirm: '本当に削除しますか？'}, remote: true do
           span.c-icon-button=icon('far', 'trash-alt', class: 'fa-lg')
-        = link_to edit_comment_path(comment) do
+        = link_to edit_comment_path(comment), remote: true do
           span.c-icon-button=icon('far', 'edit', class: 'fa-lg')

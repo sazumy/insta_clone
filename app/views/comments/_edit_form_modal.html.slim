@@ -1,15 +1,9 @@
-.modal.fade#exampleModal tabindex: "-1", role: "dialog", aria-labelledby: "exampleModalLabel", aria-hidden: "true"
-  .modal-dialog, role: "document"
+.modal#js-comment-edit-modal
+  .modal-dialog
     .modal-content
       .modal-header
-        h5.modal-title#exampleModalLabel Modal title
-        button.close{ type: "button", data-dismiss: "modal" aria-label: "Close"
-          span aria-hidden: "true"
-            | &times;
+        h5.modal-title コメント編集
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  ×
       .modal-body
-        | ...
-      .modal-footer
-        button.btn.btn-secondary data-dismiss: "modal"
-          | Close
-        button.btn.btn-primary
-          | Save changes
+        = render 'form', post: nil, comment: comment
