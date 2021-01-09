@@ -1,4 +1,4 @@
-.card-text.py-2.d-flex
+div class="card-text py-2 d-flex js-comment-#{comment.id}"
 	= render 'shared/user_icon_and_name', user: comment.user
 	.flex-grow-1.ml-2= comment.body
     - if current_user&.own?(comment)
