@@ -1,5 +1,8 @@
 ja:
   activerecord:
+    attributes:
+      comment:
+        body: "コメント"
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -16,8 +19,8 @@ ja:
         body: "本文"
       images:
         photo: "画像"
-      comment:
-        body: 'コメント'
+      comments:
+        body: "コメント"
         user_id: 'ユーザー'
         post_id: '投稿'
   date:
