@@ -7,8 +7,7 @@ class CommentsController < ApplicationController
     @comment.save
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @comment.update(comment_update_params)
