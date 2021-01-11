@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_login, only: %i[create edit update destroy]
   before_action :set_comment, only: %i[destroy edit update]
 
   def create
