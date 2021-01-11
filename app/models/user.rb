@@ -33,4 +33,12 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
+
+  def like(post)
+    self.likes.find_or_create_by(post: post)
+  end
+
+  def like?(post)
+    self.like_posts.include?(post)
+  end
 end

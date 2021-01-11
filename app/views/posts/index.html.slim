@@ -13,7 +13,12 @@
                 span.c-icon-button=icon('far', 'edit', class: 'fa-lg')
           - else
             .c-icon-group
-              span.c-icon-button= icon 'far', 'heart', class: 'fa-lg'
+              - if current_user&.like?(post)
+                = link_to likes_path(post: post), method: :post do
+                  span.c-icon-button= icon 'fa', 'heart', class: 'fa-lg'
+              - else
+                = link_to likes_path(post: post), method: :post do
+                  span.c-icon-button= icon 'far', 'heart', class: 'fa-lg'
 
       = link_to post_path(post) do
         = render 'post_img', post: post
