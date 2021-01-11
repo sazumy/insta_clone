@@ -14,7 +14,7 @@
           - else
             .c-icon-group
               - if current_user&.like?(post)
-                = link_to likes_path(post: post), method: :post do
+                = link_to like_path(current_user.likes.find_by(post: post)), method: :delete do
                   span.c-icon-button= icon 'fa', 'heart', class: 'fa-lg'
               - else
                 = link_to likes_path(post: post), method: :post do

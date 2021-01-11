@@ -41,4 +41,8 @@ class User < ApplicationRecord
   def like?(post)
     self.like_posts.include?(post)
   end
+
+  def unlike(like)
+    self.likes.delete(like)
+  end
 end
