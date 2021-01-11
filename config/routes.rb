@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
   resources :posts, shallow: true do
     resources :comments, only: %i[new create edit update destroy]
   end
+  resources :likes, only: %i[create destroy]
 end
