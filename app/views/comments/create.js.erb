@@ -1,0 +1,6 @@
+<% if @comment.errors.any? %>
+  alert("<%= @comment.errors.full_messages.join('\n') %>");
+<% else %>
+  $('.comments').prepend("<%= j(render 'comment', comment: @comment) %>");
+  $('.js-comment-form')[0].reset();
+<% end %>
