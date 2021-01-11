@@ -1,0 +1,6 @@
+<% if @comment.errors.any? %>
+  alert("<%= @comment.errors.full_messages.join('\n') %>");
+<% else %>
+  $(".js-comment-<%= @comment.id %>").html("<%= j(render 'comment', comment: @comment) %>");
+  $("#js-comment-edit-modal").modal('hide');
+<% end %>
