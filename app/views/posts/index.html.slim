@@ -12,13 +12,11 @@
               = link_to edit_post_path(post) do
                 span.c-icon-button=icon('far', 'edit', class: 'fa-lg')
           - else
-            .c-icon-group
+            .c-icon-group id="like-button-#{post.id}"
               - if current_user&.like?(post)
-                = link_to like_path(current_user.likes.find_by(post: post)), method: :delete do
-                  span.c-icon-button= icon 'fa', 'heart', class: 'fa-lg'
+                = render 'likes/unlike_button', post: post
               - else
-                = link_to likes_path(post: post), method: :post do
-                  span.c-icon-button= icon 'far', 'heart', class: 'fa-lg'
+                = render 'likes/like_button', post: post
 
       = link_to post_path(post) do
         = render 'post_img', post: post
