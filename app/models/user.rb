@@ -35,14 +35,14 @@ class User < ApplicationRecord
   end
 
   def like(post)
-    self.likes.find_or_create_by(post: post)
+    likes.find_or_create_by(post: post)
   end
 
   def like?(post)
-    self.like_posts.include?(post)
+    like_posts.include?(post)
   end
 
   def unlike(post)
-    self.like_posts.destroy(post)
+    like_posts.destroy(post)
   end
 end
