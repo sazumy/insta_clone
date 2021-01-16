@@ -37,7 +37,7 @@
             = render 'shared/user_icon_and_name', user: user
             - if logged_in?
               - if current_user.following?(user)
-                = button_to 'フォロー解除', '#', class: 'btn btn-primary active'
+                = button_to 'フォロー解除', relationship_path(current_user.relationships.find_by(follower: user)), method: :delete, class: 'btn btn-primary active'
               - else
                 = button_to 'フォロー', relationships_path(follower: user), class: 'btn btn-outline-primary'
     .card-footer
