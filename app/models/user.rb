@@ -51,4 +51,14 @@ class User < ApplicationRecord
   def unlike(post)
     like_posts.destroy(post)
   end
+
+  def follow(user)
+    unless self == user[:follower]
+      relationships.find_or_create_by!(follower: user[:follower])
+    end
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
 end
