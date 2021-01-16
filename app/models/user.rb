@@ -33,7 +33,7 @@ class User < ApplicationRecord
   has_many :relationships, dependent: :destroy
   has_many :followings, through: :relationships, source: :follower
 
-  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'follower_id'
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :user
 
   def own?(object)
@@ -52,9 +52,9 @@ class User < ApplicationRecord
     like_posts.destroy(post)
   end
 
-  def follow(user)
-    unless self == user[:follower]
-      relationships.find_or_create_by!(follower: user[:follower])
+  def follow(other_user)
+    unless self == other_user
+      relationships.find_or_create_by!(follower: other_user)
     end
   end
 
