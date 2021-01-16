@@ -33,9 +33,9 @@
     .card-body.py-0
       ul.list-group
         - @users.each do |user|
-          li.list-group-item
-            = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle', alt: 'user icon'
-            span= user.username
-
+          li.list-group-item.d-flex.justify-content-between
+            = render 'shared/user_icon_and_name', user: user
+            - if logged_in?
+              button.btn.btn-outline-success フォロー
     .card-footer
       =link_to '全て見る', '#'
