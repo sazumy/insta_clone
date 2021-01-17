@@ -4,7 +4,11 @@ class PostsController < ApplicationController
 
   def index
     @users = User.all
-    @posts = Post.includes(:user, :images).order(created_at: 'DESC').page(params[:page])
+    if logged_in?
+      @posts = current_user.feed_posts.recent.page(params[:page])
+    else
+      @posts = Post.includes(:user, :images).recent.page(params[:page])
+    end
   end
 
   def new

@@ -63,6 +63,10 @@ class User < ApplicationRecord
   end
 
   def unfollow(relathinoship_id)
-    relationships.find_by(id: relathinoship_id).destroy!
+    relationships.find(relathinoship_id).destroy!
+  end
+
+  def feed_posts
+    Post.includes(:user, :images).where(user_id: self.following_ids + [self.id])
   end
 end
