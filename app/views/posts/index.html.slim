@@ -35,14 +35,6 @@
       span ユーザー
     .card-body.py-0
       ul.list-group
-        - @users.each do |user|
-          li.py-2.d-flex.justify-content-between
-            = render 'shared/user_icon_and_name', user: user
-            - if logged_in? && current_user != user
-              div id="follow-button-#{user.id}"
-                - if current_user.following?(user)
-                  = render 'relationships/unfollow_button', user: user
-                - else
-                  = render 'relationships/follow_button', user: user
+        = render @users
     .card-footer
-      =link_to '全て見る', '#'
+      =link_to '全て見る', users_path
