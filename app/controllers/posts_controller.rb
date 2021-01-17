@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @users = User.all
+    @users = User.latest(5)
     if logged_in?
       @posts = current_user.feed_posts.recent.page(params[:page])
     else
