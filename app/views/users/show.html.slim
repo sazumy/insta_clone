@@ -1,0 +1,23 @@
+.col-md-10.mx-auto
+  .card
+    .card-body
+      .text-center.mb-3
+        = image_tag 'https://placehold.jp/40x40.png', size: '100x100', class: 'rounded-circle mr-2', alt: 'user icon'
+      .text-center.mb-3
+        = @user.username
+
+      .text-center
+        - if logged_in? && current_user != @user
+          div id="follow-button-#{@user.id}"
+            - if current_user.following?(@user)
+              = render 'relationships/unfollow_button', user: @user
+            - else
+              = render 'relationships/follow_button', user: @user
+
+          button.btn.btn-primary.active メッセージを送る
+
+      hr
+      .row
+        - @user.posts.each do |post|
+          .col-md-4.mb-3
+            == image_tag post.images.first.photo.url, size: '400x300', class: 'swiper-slide', alt: 'post img'

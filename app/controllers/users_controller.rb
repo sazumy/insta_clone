@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: :index
-
   def index
     @users = User.recent.page(params[:page]).per(10)
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def new
