@@ -37,7 +37,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :user
 
   scope :recent, -> { order(created_at: :desc) }
-  scope :latest, -> (count) { order(created_at: :desc).limit(count) }
+  scope :latest, ->(count) { order(created_at: :desc).limit(count) }
 
   def own?(object)
     id == object.user_id
@@ -70,6 +70,6 @@ class User < ApplicationRecord
   end
 
   def feed_posts
-    Post.includes(:user, :images).where(user_id: self.following_ids + [self.id])
+    Post.includes(:user, :images).where(user_id: following_ids + [id])
   end
 end
