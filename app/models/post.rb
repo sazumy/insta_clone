@@ -23,4 +23,6 @@ class Post < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
+
+  scope :recent, -> { order(created_at: :desc) }
 end
