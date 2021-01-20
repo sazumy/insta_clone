@@ -1,0 +1,9 @@
+.col-8.mx-auto
+  .card.mb-3
+    .card-header
+      span ユーザー
+    .card-body.py-0
+      ul.list-group
+        = render @users
+
+  = paginate @users

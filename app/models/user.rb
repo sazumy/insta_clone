@@ -27,7 +27,49 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
+
+  has_many :relationships, dependent: :destroy
+  has_many :followings, through: :relationships, source: :follower
+
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :followers, through: :passive_relationships, source: :user
+
+  scope :recent, -> { order(created_at: :desc) }
+  scope :latest, ->(count) { order(created_at: :desc).limit(count) }
+
   def own?(object)
     id == object.user_id
+  end
+
+  def like(post)
+    likes.find_or_create_by(post: post)
+  end
+
+  def like?(post)
+    like_posts.include?(post)
+  end
+
+  def unlike(post)
+    like_posts.destroy(post)
+  end
+
+  def follow(other_user)
+    return if self == other_user
+
+    relationships.find_or_create_by!(follower: other_user)
+  end
+
+  def following?(user)
+    followings.include?(user)
+  end
+
+  def unfollow(relathinoship_id)
+    relationships.find(relathinoship_id).destroy!
+  end
+
+  def feed_posts
+    Post.includes(:user, :images).where(user_id: following_ids + [id])
   end
 end

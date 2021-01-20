@@ -35,21 +35,6 @@ $x13: calc(#{$x} * 13);
 $x14: calc(#{$x} * 14);
 $x15: calc(#{$x} * 15);
 
-// reset -----------------------
-
-$teal: #009688; //TODO: bootstrap のtheme color のteal。デフォルトを書き換えたい
-a {
-  color: $teal;
-}
-
-.swiper-button-prev, .swiper-button-next {
-  color: $teal; // TODO: --swiper-theme-colorというところで決まっている。デフォルトを置き換える
-}
-
-.swiper-pagination-bullet-active {
-  background-color: $teal;
-}
-
 // layout -----------------------
 #header {
   margin-bottom: $x12

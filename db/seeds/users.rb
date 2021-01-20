@@ -1,5 +1,5 @@
 puts 'users ...'
-5.times do
+15.times do
   user = User.create!(
     username: Faker::JapaneseMedia::StudioGhibli.unique.character,
     email: Faker::Internet.email,

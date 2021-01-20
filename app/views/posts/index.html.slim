@@ -1,28 +1,40 @@
-.col.col-md-8
-  - @posts.each do |post|
-    .card.mb-5.mx-auto.c-image-container
-      .card-header.d-flex.justify-content-between
-        = render 'shared/user_icon_and_name', user: post.user
-        - if logged_in? && post.user == current_user
-          = render 'post_edit_delete_buttons', post: post
-      = link_to post_path(post) do
-        = render 'post_img', post: post
+.col.col-lg-8
+  - if @posts.present?
+    - @posts.each do |post|
+      .card.mb-5.mx-auto.c-image-container
+        .card-header.d-flex.justify-content-between
+          = render 'shared/user_icon_and_name', user: post.user
 
-      .card-body
-        .card-text
-          span= post.body
-  = paginate @posts
+          - if logged_in?
+            - if current_user.own?(post)
+              .c-icon-group
+                = link_to post_path(post), method: :delete do
+                  span.c-icon-button=icon('far', 'trash-alt', class: 'fa-lg')
+                = link_to edit_post_path(post) do
+                  span.c-icon-button=icon('far', 'edit', class: 'fa-lg')
+            - else
+              .c-icon-group id="like-button-#{post.id}"
+                - if current_user&.like?(post)
+                  = render 'likes/unlike_button', post: post
+                - else
+                  = render 'likes/like_button', post: post
 
-.col.col-md-4
+        = link_to post_path(post) do
+          = render 'post_img', post: post
+
+        .card-body
+          .card-text
+            span= post.body
+    = paginate @posts
+  - else
+    p 投稿がありません
+
+.col.col-lg-4
   .card
     .card-header
       span ユーザー
     .card-body.py-0
       ul.list-group
-        - @users.each do |user|
-          li.list-group-item
-            = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle', alt: 'user icon'
-            span= user.username
-
+        = render @users
     .card-footer
-      =link_to '全て見る', '#'
+      =link_to '全て見る', users_path

@@ -7,5 +7,5 @@
         = image_tag img.photo.url, width: '100'
   .form-group
     = f.label :body, t('activerecord.models.posts.body'), class: 'bmd-label-floating"'
-    = f.text_field :body, class: 'form-control'
+    = f.text_field :body, value: @post ? @post.body : '', class: 'form-control'
   = f.submit '登録する', class: 'btn btn-raised btn-success'
