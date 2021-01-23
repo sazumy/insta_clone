@@ -3,9 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def search
-    @users = User.latest(5)
     @posts = Post.includes(:user, :images).where('body LIKE ?', "%#{params[:body]}%").page(params[:page])
-    render :index
   end
 
   def index
