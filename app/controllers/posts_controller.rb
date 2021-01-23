@@ -3,11 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def search
-    inputs = params[:body]
-    keywords = inputs.split(/[[:blank:]]+/)
-    keywords.each do |keyword|
-      @posts = Post.includes(:user, :images).where('body LIKE ?', "%#{keyword}%").page(params[:page])
-    end
+    @posts = SearchForm.new(search_post_params)
   end
 
   def index
@@ -68,5 +64,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def search_post_params
+    params.requie(:post).permit(:body)
   end
 end
