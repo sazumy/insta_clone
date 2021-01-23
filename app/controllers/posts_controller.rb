@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def search
-    @posts = Post.includes(:user, :images).where('body LIKE ?', "%#{params[:body]}%").page(params[:page])
+    inputs = params[:body]
+    keywords = inputs.split(/[[:blank:]]+/)
+    keywords.each do |keyword|
+      @posts = Post.includes(:user, :images).where('body LIKE ?', "%#{keyword}%").page(params[:page])
+    end
   end
 
   def index
