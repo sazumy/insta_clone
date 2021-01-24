@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def search
-    @posts = SearchForm.new(search_post_params)
+    @search_form = SearchForm.new(search_post_params)
+    @posts = @search_form.search.page(params[:page])
   end
 
   def index
@@ -67,6 +68,6 @@ class PostsController < ApplicationController
   end
 
   def search_post_params
-    params.requie(:post).permit(:body)
+    params.permit(:body)
   end
 end
