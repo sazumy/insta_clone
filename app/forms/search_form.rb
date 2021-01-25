@@ -5,7 +5,15 @@ class SearchForm
   attribute :body, :string
 
   def search
-    Post.includes(:user, :images).where('body LIKE ?', "%#{body}%")
+    keywords = body.split(/[[:blank:]]+/)
+
+    @posts = Post.none
+
+    keywords.each do |keyword|
+      @posts = @posts.or(Post.includes(:user, :images).where('body LIKE ?', "%#{keyword}%"))
+    end
+
+    return @posts
   end
 
 end
