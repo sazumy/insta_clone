@@ -5,7 +5,11 @@
     .card-header.d-flex.justify-content-between
       = render 'shared/user_icon_and_name', user: @post.user
       - if current_user&.own?(@post)
-        = render 'post_edit_delete_buttons', post: @post
+        .c-icon-group
+          = link_to post_path(@post), method: :delete do
+            span.c-icon-button=icon('far', 'trash-alt', class: 'fa-lg')
+          = link_to edit_post_path(@post) do
+            span.c-icon-button=icon('far', 'edit', class: 'fa-lg')
     .card-body.pr-3.l-comments-container
       .card-text.py-2.d-flex
         = image_tag 'https://placehold.jp/40x40.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
