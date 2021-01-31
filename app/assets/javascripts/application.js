@@ -19,19 +19,22 @@
 //= require_tree .
 
 $(function() {
-  new Swiper('.swiper-container', {
-    loop: true,
+  $('.swiper-container').each(function(index){
+    $(this).attr('id', 'slide-' + index );
 
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
+    new Swiper('#slide-' + index, {
+      loop: true,
 
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
 
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }
+    })
   })
 })
