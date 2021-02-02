@@ -15,8 +15,6 @@ class SearchForm
       @posts = @posts.or(Post.where('posts.body LIKE ?', "%#{keyword}%")) if body_keywords.present?
     end
 
-    @posts = @posts.present? ? @posts : Post.all
-
     @posts = @posts.joins(:user).where('username LIKE ?', "%#{user_name}%") if user_name.present?
     @posts = @posts.joins(:comments).where('comments.body LIKE ?', "%#{comment_body}%") if comment_body.present?
 
