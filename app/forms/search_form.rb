@@ -12,7 +12,7 @@ class SearchForm
     @posts = Post.none
 
     body_keywords.each do |keyword|
-      @posts = @posts.or(Post.where('posts.body LIKE ?', "%#{keyword}%")) if body_keywords.present?
+      @posts = @posts.or(Post.includes(:user, :images).where('posts.body LIKE ?', "%#{keyword}%")) if body_keywords.present?
     end
 
     @posts = @posts.joins(:user).where('username LIKE ?', "%#{user_name}%") if user_name.present?
