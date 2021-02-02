@@ -12,11 +12,13 @@ class SearchForm
     @posts = Post.none
 
     body_keywords.each do |keyword|
-      @posts = @posts.or(Post.includes(:user, :images).where('body LIKE ?', "%#{keyword}%")) if body_keywords.present?
+      @posts = @posts.or(Post.where('posts.body LIKE ?', "%#{keyword}%")) if body_keywords.present?
     end
 
-    @posts = Post.joins(:user).includes(:user, :images).where('username LIKE ?', "%#{user_name}%") if user_name.present?
-    @posts = Post.joins(:comments).includes(:user, :images).where('comments.body LIKE ?', "%#{comment_body}%") if comment_body.present?
+    @posts = @posts.present? ? @posts : Post.all
+
+    @posts = @posts.joins(:user).where('username LIKE ?', "%#{user_name}%") if user_name.present?
+    @posts = @posts.joins(:comments).where('comments.body LIKE ?', "%#{comment_body}%") if comment_body.present?
 
     return Kaminari.paginate_array(@posts)
   end
