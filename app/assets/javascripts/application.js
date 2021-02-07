@@ -38,3 +38,19 @@ $(function() {
     })
   })
 })
+
+function checkInput(){
+  var columns = $('#js_search_form').serializeArray(),
+        q = ""
+
+  $.each(columns, function(index, col){
+    if (col.name === "utf8") return
+    q += col.value
+    return q
+  })
+
+  if (q == "") {
+    location.href = "/"
+    return false
+  }
+}

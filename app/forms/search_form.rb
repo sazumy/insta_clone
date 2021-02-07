@@ -7,18 +7,16 @@ class SearchForm
   attribute :comment_body, :string
 
   def search
-    body_keywords = body.strip.split(/[[:blank:]]+/)
-
-    @posts = Post.none
-
-    body_keywords.each do |keyword|
-      @posts = @posts.or(Post.includes(:user, :images).where('posts.body LIKE ?', "%#{keyword}%")) if body_keywords.present?
-    end
-
-    @posts = @posts.joins(:user).where('username LIKE ?', "%#{user_name}%") if user_name.present?
-    @posts = @posts.joins(:comments).where('comments.body LIKE ?', "%#{comment_body}%") if comment_body.present?
-
-    return Kaminari.paginate_array(@posts)
+    scope = Post.includes(:user, :images)
+    scope = splited_bodies.map { |splited_body| scope.body_contain(splited_body) }.inject { |result, scp| result.or(scp) } if body.present?
+    scope = scope.comment_body_contain(body) if comment_body.present?
+    scope = scope.username_contain(user_name) if user_name.present?
+    scope
   end
 
+  private
+
+  def splited_bodies
+    body.strip.split(/[[:blank:]]+/)
+  end
 end
