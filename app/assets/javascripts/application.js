@@ -19,19 +19,38 @@
 //= require_tree .
 
 $(function() {
-  new Swiper('.swiper-container', {
-    loop: true,
+  $('.swiper-container').each(function(index){
+    $(this).attr('id', 'slide-' + index );
 
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
+    new Swiper('#slide-' + index, {
+      loop: true,
 
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
 
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }
+    })
   })
 })
+
+function checkInput(){
+  var columns = $('#js_search_form').serializeArray(),
+        q = ""
+
+  $.each(columns, function(index, col){
+    if (col.name === "utf8") return
+    q += col.value
+    return q
+  })
+
+  if (q == "") {
+    location.href = "/"
+    return false
+  }
+}

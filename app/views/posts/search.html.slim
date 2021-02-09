@@ -1,0 +1,7 @@
+.col.col-md-8.mx-auto
+  h2.text-center
+    | 検索結果: #{@posts.total_count}件
+  = render @posts
+  .text-center.mb-5
+    = link_to 'トップに戻る', root_path, class: 'btn btn-primary btn-raised'
+    = paginate @posts

@@ -2,6 +2,11 @@ class PostsController < ApplicationController
   before_action :require_login, only: %i[new edit]
   before_action :set_post, only: %i[show edit update destroy]
 
+  def search
+    @search_form = SearchForm.new(search_post_params)
+    @posts = @search_form.search.page(params[:page])
+  end
+
   def index
     @users = User.latest(5)
     @posts = if logged_in?
@@ -60,5 +65,9 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def search_post_params
+    params.fetch(:q, {}).permit(:body, :user_name, :comment_body)
   end
 end
