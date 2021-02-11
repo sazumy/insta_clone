@@ -20,4 +20,5 @@
       .row
         - @user.posts.each do |post|
           .col-md-4.mb-3
-            == image_tag post.images.first.photo.url, size: '400x300', class: 'swiper-slide', alt: 'post img'
+            = link_to post_path(post) do
+              = image_tag post.images.first.photo.url(:thumb), size: '400x400', class: 'swiper-slide', alt: 'post img'

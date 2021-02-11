@@ -17,7 +17,7 @@ header#header
                           {path: new_post_path, icon: 'image', title: '新規投稿作成'},
                           {path: '#', icon: 'comments', title: 'チャットルームへ'},
                           {path: '#', icon: 'heart', title: 'あなたへのお知らせ'},
-                          {path: '#', icon: 'user', title: 'マイルームへ'},
+                          {path: user_path(current_user), icon: 'user', title: 'マイルームへ'},
                         ]
 
           - nav_menus.each do |menu|

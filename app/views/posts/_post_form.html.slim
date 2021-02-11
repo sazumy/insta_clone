@@ -4,7 +4,7 @@
     = f.file_field :photoes, multiple: true, class: 'form-control mb-1'
     - if action_name == 'edit'
       - @post.images.each do |img|
-        = image_tag img.photo.url, width: '100'
+        = image_tag img.photo.url(:thumb), width: '100'
   .form-group
     = f.label :body, t('activerecord.models.posts.body'), class: 'bmd-label-floating"'
     = f.text_field :body, value: @post&.body, class: 'form-control'
