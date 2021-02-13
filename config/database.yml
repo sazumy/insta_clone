@@ -51,4 +51,4 @@ production:
   <<: *default
   database: insta_clone_production
   username: insta_clone
-  password: <%= ENV['INSTA_CLONE_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials.db[:password] %>
