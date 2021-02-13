@@ -2,6 +2,9 @@
   .card
     .card-body
       .text-center.mb-3
+        - if current_user == @user
+          = link_to "プロフィール編集", edit_mypage_account_path, class: 'btn btn-primary btn-raised'
+      .text-center.mb-3
         - if @user.avatar?
           = image_tag @user.avatar.url, size: '100x100', class: 'rounded-circle mr-2', alt: 'user icon'
         - else
