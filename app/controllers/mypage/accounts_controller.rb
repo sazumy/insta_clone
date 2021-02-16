@@ -17,7 +17,7 @@ class Mypage::AccountsController < ApplicationController
   private
 
   def set_user
-    @user = current_user
+    @user = User.find(current_user.id)
   end
 
   def account_params
