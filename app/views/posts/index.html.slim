@@ -10,6 +10,12 @@
     .card-header
       span ユーザー
     .card-body.py-0
+      - if logged_in?
+        .py-2.d-flex.justify-content-between.border-bottom
+          = render 'shared/user_icon_and_name', user: current_user
+          .d-inline-block.align-self-center.ml-2
+            span.text-muted としてログイン中
+
       ul.list-group
         = render @users
     .card-footer

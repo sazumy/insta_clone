@@ -7,7 +7,7 @@ class Mypage::AccountsController < ApplicationController
 
   def update
     if @user.update(account_params)
-      redirect_to edit_mypage_account_path, success: 'プロフィールを更新しました'
+      redirect_to edit_mypage_account_path, flash: { success: 'プロフィールを更新しました'}
     else
       flash.now['danger'] = 'プロフィールの更新に失敗しました'
       render :edit
@@ -17,7 +17,7 @@ class Mypage::AccountsController < ApplicationController
   private
 
   def set_user
-    @user = current_user
+    @user = current_user #ビューのcurrent_userだけでは色々とダメだった点があるので、ノートにまとめる
   end
 
   def account_params
