@@ -17,7 +17,7 @@ class Mypage::AccountsController < ApplicationController
   private
 
   def set_user
-    @user = current_user #ビューのcurrent_userだけでは色々とダメだった点があるので、ノートにまとめる
+    @user = current_user
   end
 
   def account_params
