@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 @import 'bootstrap-material-design/dist/css/bootstrap-material-design';
 @import 'swiper/swiper-bundle';
 @import 'font-awesome-sprockets';
@@ -35,6 +36,10 @@ $x13: calc(#{$x} * 13);
 $x14: calc(#{$x} * 14);
 $x15: calc(#{$x} * 15);
 
+// foundation -------------------
+form {
+  margin-bottom: 0
+}
 // layout -----------------------
 #header {
   margin-bottom: $x12

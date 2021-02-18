@@ -11,6 +11,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       users:
+        avatar: "アバター"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード（確認）"
