@@ -21,6 +21,7 @@
 class Relationship < ApplicationRecord
   belongs_to :user
   belongs_to :follower, class_name: 'User'
+  has_one :activity, as: :subject, dependent: :destroy
 
   validates :user_id, uniqueness: { scope: :follower_id }
 end
