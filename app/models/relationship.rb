@@ -24,4 +24,12 @@ class Relationship < ApplicationRecord
   has_one :activity, as: :subject, dependent: :destroy
 
   validates :user_id, uniqueness: { scope: :follower_id }
+
+  after_create_commit :create_activities
+
+  private
+
+  def create_activities
+    Activity.create!(subject: self, user: follower, action_type: :followed_me)
+  end
 end
