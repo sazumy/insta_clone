@@ -1,2 +1,4 @@
-class Mypage::ActivitiesController < ApplicationController
+class Mypage::ActivitiesController < Mypage::BaseController
+  def index
+  end
 end
