@@ -1,0 +1,7 @@
+= link_to transition_path(activity) do
+  = link_to activity.subject.user.username, user_path(activity.subject.user)
+  | があなたの
+  =link_to '投稿', post_path(activity.subject.post)
+  | にいいねしました
+  .text-right
+    = l activity.created_at, format: :short

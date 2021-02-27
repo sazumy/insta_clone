@@ -1,6 +1,6 @@
 - if @activities.present?
   - @activities.each do |activity|
-    = activity
+    = render "#{activity.action_type}", activity: activity
 - else
   .text-center
     | お知らせはありません

@@ -1,0 +1,7 @@
+= link_to transition_path(activity) do
+  = link_to activity.subject.follower.username, user_path(activity.subject.follower)
+  | があなたを
+  =link_to '投稿', post_path(activity.subject.post)
+  | フォローしました
+  .text-right
+    = l activity.created_at, format: :short
