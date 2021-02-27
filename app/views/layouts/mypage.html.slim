@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      | InstaClone
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  body
+    = render 'shared/header'
+    main.container.row.mx-auto
+      .col.col-xl-8.mx-auto.card.p-0
+        .card-body.d-block.d-md-flex.flex-row
+          .col-md-3.pl-md-0
+            = render 'mypage/shared/sidebar'
+          .col-md-9.pr-md-0
+            = yield
