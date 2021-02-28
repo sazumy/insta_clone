@@ -21,12 +21,33 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Activity < ApplicationRecord
+  include Rails.application.routes.url_helpers
+  # xxx_pathは Controller, Helper, Viewでのみ使える
+
   belongs_to :user
   belongs_to :subject, polymorphic: true
+
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
 
   enum action_type: {
     commented_to_own_post: 0,
     liked_to_own_post: 1,
     followed_me: 2
   }
+
+  enum read: {
+    unread: false,
+    read: true
+  }
+
+  def transition_path
+    case action_type.to_sym
+    when :commented_to_own_post
+      post_path(subject.post, anchor: "js-comment-#{subject.id}")
+    when :liked_to_own_post
+      post_path(subject.post)
+    when :followed_me
+      user_path(subject.follower)
+    end
+  end
 end
