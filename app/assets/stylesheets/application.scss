@@ -37,6 +37,9 @@ $x14: calc(#{$x} * 14);
 $x15: calc(#{$x} * 15);
 
 $_text-sm: 12px;
+
+$_gray_light: #f1f1f1;
+
 // foundation -------------------
 form {
   margin-bottom: 0
@@ -55,7 +58,7 @@ form {
   font-size: $_text-sm;
   left: calc(100% - 400px);
   min-width: 400px;
-  .dropdown-item {
+  .c-activity-list {
     min-width: 400px;
   .text-right {
     width: 100%;
@@ -64,6 +67,12 @@ form {
 }
 
 // component ---------------------
+.c-activity-list {
+  &.read {
+    background-color: $_gray_light;
+  }
+}
+
 .c-icon-button {
   display: inline-block;
   height: $x8;

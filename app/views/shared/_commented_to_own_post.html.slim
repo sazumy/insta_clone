@@ -1,4 +1,4 @@
-= link_to read_activity_path(activity), class: "dropdown-item border-bottom #{'read' if activity.read?}", method: :patch do
+= link_to read_activity_path(activity), class: "c-activity-list dropdown-item border-bottom #{'read' if activity.read?}", method: :patch do
   - photo_url = activity.subject.user.avatar.present? ? activity.subject.user.avatar.url : 'default_avatar.png'
   = image_tag photo_url, class: 'rounded-circle mr-1', size: '30x30'
   object
