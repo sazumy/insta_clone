@@ -20,8 +20,8 @@ header#header
           li.dropdown.nav-item
             = link_to '#', id: 'dropdownMenuLink', class: 'nav-link', title: 'あなたへのお知らせ', data: {toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'false'} do
               = icon 'far', 'heart', class: 'fa-lg'
-            .dropdown-menu area-labelledby='dropdownMenuLink'
-              | "aaaaa"
+            .dropdown-menu.l-header-activities area-labelledby='dropdownMenuLink'
+              = render 'shared/header_activities'
           li.nav-item= link_to user_path(current_user), class: 'nav-link', title: 'マイルームへ' do
             = icon 'far', 'user', class: 'fa-lg'
           li.nav-item= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete

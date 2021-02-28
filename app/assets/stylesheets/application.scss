@@ -19,7 +19,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-
+// variables ----------------------------------
 $x: 4px;
 $x2: calc(#{$x} * 2);
 $x3: calc(#{$x} * 3);
@@ -36,6 +36,7 @@ $x13: calc(#{$x} * 13);
 $x14: calc(#{$x} * 14);
 $x15: calc(#{$x} * 15);
 
+$_text-sm: 12px;
 // foundation -------------------
 form {
   margin-bottom: 0
@@ -48,6 +49,18 @@ form {
 .l-comments-container {
   max-height: 240px;
   overflow-y: scroll;
+}
+
+.l-header-activities{
+  font-size: $_text-sm;
+  left: calc(100% - 400px);
+  min-width: 400px;
+  .dropdown-item {
+    min-width: 400px;
+  .text-right {
+    width: 100%;
+  }
+  }
 }
 
 // component ---------------------
