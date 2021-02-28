@@ -1,5 +1,6 @@
 = link_to read_activity_path(activity), class: "dropdown-item border-bottom #{'read' if activity.read?}" do
-  = image_tag activity.subject.user.avatar.url, class: 'rounded-circle mr-1', size: '30x30'
+  - photo_url = activity.subject.user.avatar.present? ? activity.subject.user.avatar.url : 'default_avatar.png'
+  = image_tag photo_url, class: 'rounded-circle mr-1', size: '30x30'
   object
     = link_to activity.subject.follower.username, user_path(activity.subject.follower)
   | があなたを
