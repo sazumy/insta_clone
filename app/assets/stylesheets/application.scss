@@ -84,6 +84,15 @@ form {
 .c-image-container {
   max-width: 400px;
 }
+
+.c-nortification {
+  position: relative;
+  .c-nortification-count {
+    position: absolute;
+    top: -40px;
+    right: 0px;
+  }
+}
 .post {
   max-width: 400px;
 }
