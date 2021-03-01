@@ -9,7 +9,7 @@ header#header
         =f.search_field :body, class: 'form-control mr-sm-2', placeholder: '本文'
         =f.search_field :user_name, class: 'form-control mr-sm-2', placeholder: 'ユーザー名'
         =f.search_field :comment_body, class: 'form-control mr-sm-2', placeholder: 'コメント'
-        =f.submit "SEARCH", class: 'btn btn-outline-success my-2 my-sm-0', onclick: "return checkInput();"
+        =f.submit "SEARCH", class: 'btn btn-outline-primary my-2 my-sm-0', onclick: "return checkInput();"
 
       ul.navbar-nav.mt-2.mt-lg-0
         - if logged_in?
