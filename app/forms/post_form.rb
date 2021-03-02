@@ -17,8 +17,8 @@ class PostForm
 
   def save!
     return false if invalid?
-
-    photoes&.each do |photo|
+    return false if photoes.nil?
+    photoes.each do |photo|
       @post.images.build(photo: photo).save!
     end
 

@@ -1,7 +1,4 @@
 .c-user-info
   = link_to user_path(user), class: 'text-nowrap' do
-    - if user.avatar.present?
-      = image_tag user.avatar.url, size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
-    - else
-      = image_tag 'default_avatar.png', size: '40x40', class: 'rounded-circle mr-2', alt: 'no user icon'
+    = image_tag user.avatar.url, size: '40x40', class: 'rounded-circle mr-2', alt: 'user icon'
     span= user.username
