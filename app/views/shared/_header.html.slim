@@ -9,22 +9,26 @@ header#header
         =f.search_field :body, class: 'form-control mr-sm-2', placeholder: '本文'
         =f.search_field :user_name, class: 'form-control mr-sm-2', placeholder: 'ユーザー名'
         =f.search_field :comment_body, class: 'form-control mr-sm-2', placeholder: 'コメント'
-        =f.submit "SEARCH", class: 'btn btn-outline-success my-2 my-sm-0', onclick: "return checkInput();"
+        =f.submit "SEARCH", class: 'btn btn-outline-primary my-2 my-sm-0', onclick: "return checkInput();"
+
       ul.navbar-nav.mt-2.mt-lg-0
         - if logged_in?
-          ruby:
-            nav_menus = [
-                          {path: new_post_path, icon: 'image', title: '新規投稿作成'},
-                          {path: '#', icon: 'comments', title: 'チャットルームへ'},
-                          {path: '#', icon: 'heart', title: 'あなたへのお知らせ'},
-                          {path: user_path(current_user), icon: 'user', title: 'マイルームへ'},
-                        ]
-
-          - nav_menus.each do |menu|
-            li.nav-item= link_to menu[:path], class: 'nav-link', title: menu[:title] do
-              = icon 'far', menu[:icon], class: 'fa-lg'
+          li.nav-item= link_to new_post_path, class: 'nav-link', title: '新規投稿作成' do
+            = icon 'far', 'image', class: 'fa-lg'
+          li.nav-item= link_to '#', class: 'nav-link', title: 'チャットルームへ' do
+            = icon 'far', 'comments', class: 'fa-lg'
+          li.dropdown.nav-item
+            = link_to '#', id: 'dropdownMenuLink', class: 'nav-link', title: 'あなたへのお知らせ', data: {toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'false'} do
+              = icon 'far', 'heart', class: 'fa-lg'
+            .c-nortification
+              = render 'shared/unread_badge'
+            .dropdown-menu.l-header-activities area-labelledby='dropdownMenuLink'
+              = render 'shared/header_activities'
+          li.nav-item= link_to user_path(current_user), class: 'nav-link', title: 'マイルームへ' do
+            = icon 'far', 'user', class: 'fa-lg'
           li.nav-item= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete
         - else
           li.nav-item=link_to 'ポスト一覧', posts_path, class: 'nav-link'
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
+
   = render 'shared/flash'

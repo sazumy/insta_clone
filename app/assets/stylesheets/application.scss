@@ -14,12 +14,13 @@
  *= require_self
  */
 
-@import 'bootstrap-material-design/dist/css/bootstrap-material-design';
+// @import 'bootstrap-material-design/dist/css/bootstrap-material-design';
+@import 'bootstrap-material-design/scss/bootstrap-material-design';
 @import 'swiper/swiper-bundle';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
-
+// variables ----------------------------------
 $x: 4px;
 $x2: calc(#{$x} * 2);
 $x3: calc(#{$x} * 3);
@@ -36,6 +37,10 @@ $x13: calc(#{$x} * 13);
 $x14: calc(#{$x} * 14);
 $x15: calc(#{$x} * 15);
 
+$_text-sm: 12px;
+
+$_gray_light: #f1f1f1;
+
 // foundation -------------------
 form {
   margin-bottom: 0
@@ -50,7 +55,25 @@ form {
   overflow-y: scroll;
 }
 
+.l-header-activities{
+  font-size: $_text-sm;
+  left: calc(100% - 400px);
+  min-width: 400px;
+  .c-activity-list {
+    min-width: 400px;
+  .text-right {
+    width: 100%;
+  }
+  }
+}
+
 // component ---------------------
+.c-activity-list {
+  &.read {
+    background-color: $_gray_light;
+  }
+}
+
 .c-icon-button {
   display: inline-block;
   height: $x8;
@@ -61,6 +84,15 @@ form {
 
 .c-image-container {
   max-width: 400px;
+}
+
+.c-nortification {
+  position: relative;
+  .c-nortification-count {
+    position: absolute;
+    top: -40px;
+    right: 0px;
+  }
 }
 .post {
   max-width: 400px;

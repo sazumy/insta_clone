@@ -1,0 +1,3 @@
+- if current_user.activities&.unread.count > 0
+  span.badge.badge-danger.c-nortification-count
+    = current_user.activities.unread.count

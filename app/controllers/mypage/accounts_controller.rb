@@ -1,5 +1,4 @@
-class Mypage::AccountsController < ApplicationController
-  before_action :require_login
+class Mypage::AccountsController < Mypage::BaseController
   before_action :set_user
 
   def edit
