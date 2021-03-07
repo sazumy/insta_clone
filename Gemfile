@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'carrierwave'
+gem 'config'
 gem 'counter_culture'
 gem 'font-awesome-sass'
 gem 'html2slim'
@@ -49,6 +50,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
+  gem 'letter_opener_web', '~> 1.0'
   gem 'pry-byebug'
   gem 'pry-rails'
 end
