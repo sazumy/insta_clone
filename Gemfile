@@ -40,6 +40,8 @@ gem 'mini_magick'
 gem 'popper_js'
 gem 'redis-rails'
 gem 'rails-i18n'
+gem 'sidekiq'
+gem 'sinatra'
 gem 'slim-rails'
 gem 'sorcery'
 
